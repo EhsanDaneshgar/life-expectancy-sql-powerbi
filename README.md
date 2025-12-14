@@ -1,4 +1,9 @@
-# life-expectancy-sql-powerbi
-SQL Server ETL project demonstrating a staging-table and upsert (update–insert) pattern to integrate overlapping life expectancy datasets, with Power BI used for multi-country time-series visualization.
+## life-expectancy-sql-powerbi
 
-The project loads an initial dataset downloaded in 2023 and then merges a newer 2025 dataset using controlled update and insert logic. Overlapping (Entity, Year) records are refreshed with updated values, while new years are appended, extending the final dataset coverage to 2023.
+**End-to-end SQL Server ETL project that starts with two raw CSV source files and produces a single clean, merged life expectancy dataset, with Power BI used for final validation and visualization.**
+
+The project begins by importing two public life expectancy CSV files downloaded at different times from *Our World in Data*. The files differ in schema, column naming, and year coverage, and include overlapping historical records.
+
+The first dataset (downloaded in 2023) is loaded into SQL Server as the initial baseline. The second dataset (downloaded in 2025) is then staged and merged using controlled update–insert logic. For overlapping `(Entity, Year)` records, updated life expectancy values from the newer file replace older values, while new years are appended without creating duplicates.
+
+A staging-table pattern is used throughout to clean column names, standardize data types, validate overlaps, and enforce a natural primary key before loading into the final table. Power BI is connected to the SQL Server database to validate results and visualize multi-country life expectancy trends over time.
