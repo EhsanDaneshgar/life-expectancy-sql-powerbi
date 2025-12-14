@@ -26,13 +26,10 @@ It is NOT a second or alternative method of table creation.
 Design notes
 ------------
 1) Primary key selection (Entity, Year):
-   - The dataset represents life expectancy per entity per year.
-   - Business rule: one and only one life expectancy value is valid
-     for a given (Entity, Year) combination.
-   - Neither Entity nor Year alone is unique, but together they form
-     a natural key that uniquely identifies a record.
-   - This primary key prevents duplicate loads and supports safe
-     update/insert (merge) operations across multiple data versions.
+   - Life expectancy is defined per entity per year.
+   - Neither Entity nor Year alone is unique.
+   - Together they form a natural key that uniquely identifies a record.
+   - This prevents duplicate loads and supports safe merge operations.
 
 2) Entity uses NVARCHAR(200) instead of NVARCHAR(MAX):
    - Entity is part of the primary key and frequently used in joins.
@@ -42,8 +39,7 @@ Design notes
 
 3) Staging table has no primary key or constraints:
    - Used only as a temporary landing zone for raw CSV imports.
-   - Data validation, deduplication, and reconciliation are handled
-     during the merge step into the main table.
+   - Validation and reconciliation occur during the merge step.
 */
 
 -- =========================================================
@@ -83,4 +79,5 @@ CREATE TABLE dbo.LifeExpectancy_Staging
     Life_Expectancy  DECIMAL(5,2)   NULL
 );
 GO
+
 
