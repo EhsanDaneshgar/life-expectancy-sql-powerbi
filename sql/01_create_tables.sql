@@ -25,8 +25,6 @@ It is NOT a second or alternative method of table creation.
 
 Design notes
 ------------
-Design notes
-------------
 1) Primary key selection (Entity, Year):
    - The dataset represents life expectancy per entity per year.
    - Business rule: one and only one life expectancy value is valid
@@ -46,6 +44,7 @@ Design notes
    - Used only as a temporary landing zone for raw CSV imports.
    - Data validation, deduplication, and reconciliation are handled
      during the merge step into the main table.
+*/
 
 -- =========================================================
 -- Main Table: dbo.LifeExpectancy
@@ -84,5 +83,4 @@ CREATE TABLE dbo.LifeExpectancy_Staging
     Life_Expectancy  DECIMAL(5,2)   NULL
 );
 GO
-
 
