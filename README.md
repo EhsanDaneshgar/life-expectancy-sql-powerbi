@@ -18,7 +18,7 @@ A staging-table pattern is used throughout to clean column names, standardize da
 6. Run `sql/03_merge_file2.sql`.
 7. (Optional) Connect Power BI to `dbo.LifeExpectancy`.
 
-## How to Run This Project### Importing CSV Files into SQL Server
+## Importing CSV Files into SQL Server
 
 CSV files are imported into SQL Server using the **SQL Server Import and Export Wizard**
 via SQL Server Management Studio (SSMS).
